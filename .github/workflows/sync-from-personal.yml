@@ -1,4 +1,4 @@
-# One-way mirror: smshagor-dev/ForgeSense-AI:main -> OpenMind-AI-Technologies-Limited/ForgeSense-AI:bench-calibration-capture
+# One-way mirror: smshagor-dev/ForgeSense-AI:main -> OpenMind-AI-Technologies-Limited/ForgeSense-AI:main
 # Code sync needs no extra secret for public repositories.
 # Optional ORG_SYNC_TOKEN needs Contents+Workflows write to update workflow files.
 name: Sync from personal GitHub
@@ -21,6 +21,7 @@ jobs:
       - name: Checkout organization
         uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
           token: ${{ secrets.ORG_SYNC_TOKEN || github.token }}
       - name: Apply personal source changes without force-pushing
@@ -95,5 +96,5 @@ jobs:
             exit 0
           fi
           git commit -m "chore: sync personal ForgeSense-AI at $upstream_sha"
-          git push origin HEAD:bench-calibration-capture
+          git push origin HEAD:main
           echo "Synced personal source: $upstream_sha" >> "$GITHUB_STEP_SUMMARY"
